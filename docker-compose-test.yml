@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  apache:
+    build: "apache/"
+    # the port is exposed to 8080, since the default github runner fails to make
+    # curl request to its localhost on port 80
+    ports:
+      - 8080:80
+    environment:
+      - MYNAME=user
+      - CLOUD=LOCAL
+      - BLUESITE=false
+      - MANAGED_FILES=false
+      - MANAGED_DB=false
+      - MONGO_USER=student
+      - MONGO_PASSWORD=Cloud247
+      - MONGO_HOST=mongodb
+      - MONGO_DB=memegen
+  mongodb:
+    image: mongo:4.2
+    volumes:
+      - ${PWD}/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      - MONGO_INITDB_DATABASE=memegen
+      - MONGO_INITDB_ROOT_USERNAME=student
+      - MONGO_INITDB_ROOT_PASSWORD=Cloud247

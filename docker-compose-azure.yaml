@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  apache:
+    build: "apache/"
+    ports:
+      - 80:80
+    environment:
+      - MYNAME=user
+      - CLOUD=AZ
+      - BLUESITE=false
+      - MANAGED_FILES=true
+      - MANAGED_DB=true
+      - AZURE_DB_USER=someuser
+      - AZURE_DB_PASSWORD=somepassword
+      - AZURE_STORAGE_ACCOUNT=storageaccountname
+      - AZURE_STORAGE_CONTAINER=storagecontainername
+      - AZURE_STORAGE_KEY=storagekey1

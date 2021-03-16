@@ -1,0 +1,30 @@
+version: "3"
+
+# Environment variables are parsed as strings -> do not add "" arround your values
+
+services:
+  apache:
+    build: "apache/"
+    volumes:
+      - ./saved-memes:/var/www/html/meme-generator/memes
+    # - ./apache/app:/var/www/html
+    ports:
+      - 80:80
+    environment:
+      - MYNAME=user
+      - CLOUD=LOCAL
+      - BLUESITE=false
+      - MANAGED_FILES=false
+      - MANAGED_DB=false
+      - MONGO_USER=student
+      - MONGO_PASSWORD=Cloud247
+      - MONGO_HOST=mongodb
+      - MONGO_DB=memegen
+  mongodb:
+    image: mongo:4.2
+    volumes:
+      - ${PWD}/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      - MONGO_INITDB_DATABASE=memegen
+      - MONGO_INITDB_ROOT_USERNAME=student
+      - MONGO_INITDB_ROOT_PASSWORD=Cloud247

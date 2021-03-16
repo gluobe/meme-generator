@@ -1,0 +1,4 @@
+apache/app/vendor
+composer.json
+composer.lock
+scripts/
