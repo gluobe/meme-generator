@@ -1,5 +1,7 @@
 # Gluo Meme Generator using Docker
 
+> Public version *without* workflow files.
+
 ## Installation
 
 1. Clone this repository.  
