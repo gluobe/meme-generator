@@ -1,0 +1,6 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.173",
+        "microsoft/azure-storage-blob": "^1.5"
+    }
+}
