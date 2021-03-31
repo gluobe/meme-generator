@@ -11,7 +11,7 @@ services:
     ports:
       - 80:80
     environment:
-      - MYNAME=user
+      - MYNAME=${USER}
       - CLOUD=LOCAL
       - BLUESITE=false
       - MANAGED_FILES=false
