@@ -11,7 +11,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: "gluo-scoring-app"
+  IMAGE_NAME: "gluo-meme-generator"
 
 jobs:
   test:
