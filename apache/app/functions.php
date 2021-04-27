@@ -229,14 +229,16 @@ function generateMeme($top, $bot, $imgname){
 		// Upload generated Meme
 		$blobClient->createBlockBlob($saContainerName, $imgnametargetwithext, $image);
 		$url = "https://" . $saAccountName . ".blob.core.windows.net/" . $saContainerName . "/" . $imgnametargetwithext;
+
 	} else {
 		print "nothing happened";
 	}
         	// Delete temporary file
 	        unlink("/var/www/html/meme-generator/memes/".$imgnametargetwithext);
     }
-    
+      
     return array($imgnametargetnoext,$url);
+ }
 }
 
 ?>
