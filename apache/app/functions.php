@@ -158,7 +158,7 @@ function GetMemes(){
 
         echo json_encode(iterator_to_array($iterator));
     }
-
+}
 
 // Generates a meme with the python script and either puts it locally or in an S3 bucket
 function generateMeme($top, $bot, $imgname){
@@ -236,9 +236,7 @@ function generateMeme($top, $bot, $imgname){
         	// Delete temporary file
 	        unlink("/var/www/html/meme-generator/memes/".$imgnametargetwithext);
     }
-      
     return array($imgnametargetnoext,$url);
- }
 }
 
 ?>
