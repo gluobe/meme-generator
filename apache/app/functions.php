@@ -158,7 +158,7 @@ function GetMemes(){
 
         echo json_encode(iterator_to_array($iterator));
     }
-}
+
 
 // Generates a meme with the python script and either puts it locally or in an S3 bucket
 function generateMeme($top, $bot, $imgname){
@@ -226,21 +226,9 @@ function generateMeme($top, $bot, $imgname){
 		// Create client
 		$blobClient = BlobRestProxy::createBlobService($saConnectionString);
 
-		// Create Storage Container if not exists
-		try {
-			$blobClient->createContainer($saContainerName);
-		} 
-
-		catch (Exception $e) {
-			echo $e->getMessage();
-		}
-
-		finally {
-		
-			// Upload generated Meme
-			$blobClient->createBlockBlob($saContainerName, $imgnametargetwithext, $image);
-			$url = "https://" . $saAccountName . ".blob.core.windows.net/" . $saContainerName . "/" . $imgnametargetwithext;
-
+		// Upload generated Meme
+		$blobClient->createBlockBlob($saContainerName, $imgnametargetwithext, $image);
+		$url = "https://" . $saAccountName . ".blob.core.windows.net/" . $saContainerName . "/" . $imgnametargetwithext;
 		} 
 	} else {
 		print "nothing happened";
